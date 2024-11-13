@@ -1,15 +1,32 @@
 import async from 'async';
 import chalk from 'chalk';
-import type { MultiBar, SingleBar } from 'cli-progress';
+import type {
+  MultiBar,
+  SingleBar,
+} from 'cli-progress';
 import { globSync } from 'glob';
 import * as path from 'path';
 import readline from 'readline';
 import invariant from 'tiny-invariant';
-import { runAssertions, runCompareAssertion } from './assertions';
-import { fetchWithCache, getCache } from './cache';
+
+import {
+  runAssertions,
+  runCompareAssertion,
+} from './assertions';
+import {
+  fetchWithCache,
+  getCache,
+} from './cache';
 import cliState from './cliState';
-import { getEnvBool, getEnvInt, isCI } from './envars';
-import { renderPrompt, runExtensionHook } from './evaluatorHelpers';
+import {
+  getEnvBool,
+  getEnvInt,
+  isCI,
+} from './envars';
+import {
+  renderPrompt,
+  runExtensionHook,
+} from './evaluatorHelpers';
 import logger from './logger';
 import type Eval from './models/eval';
 import { generateIdFromPrompt } from './models/prompt';
@@ -29,7 +46,10 @@ import type {
   RunEvalOptions,
   TestSuite,
 } from './types';
-import { transform, TransformInputType } from './util/transform';
+import {
+  transform,
+  TransformInputType,
+} from './util/transform';
 
 export const DEFAULT_MAX_CONCURRENCY = 4;
 
@@ -207,6 +227,7 @@ class Evaluator {
             logger,
             fetchWithCache,
             getCache,
+            test,
           },
           {
             includeLogProbs: test.assert?.some((a) => a.type === 'perplexity'),

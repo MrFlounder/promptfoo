@@ -1,6 +1,11 @@
 import type winston from 'winston';
+
+import type { AtomicTestCase } from './';
 import type { Prompt } from './prompts';
-import type { NunjucksFilterMap, TokenUsage } from './shared';
+import type {
+  NunjucksFilterMap,
+  TokenUsage,
+} from './shared';
 
 export type ProviderId = string;
 export type ProviderLabel = string;
@@ -40,6 +45,7 @@ export interface CallApiContextParams {
   originalProvider?: ApiProvider;
   prompt: Prompt;
   vars: Record<string, string | object>;
+  test?: AtomicTestCase;
 }
 
 export interface CallApiOptionsParams {
